@@ -1,0 +1,72 @@
+Input Output
+Yang pertama dan paling penting ialah input dan output (iyalah nggak ada isinya lu mau ngapain tong :v). Digunakan untuk mengimport data atau mengexport data. Data yang disupport pandas seperti format tabel kebanyakan seperti csv dan excel.
+
+pd.read_csv("namafile")
+pd.read_table("namafile")
+pd.read_excel("namafile")
+pd.read_html("url")
+Untuk import jangan lupa juga menyertakan lokasi direktori dari data kalian. Untuk data yang dari web tentu saja memasukkan link dari data tersebut
+
+df.to_csv("namafile")
+df.to_table("namafile")
+df.to_excel("namafile")
+df.to_html("namafile")
+df yang dimaksud disini adalah nama variabel dari dataframe kalian.
+
+Melihat/mengecek data
+df.head(n)
+df.tail(n)
+df.shape()
+df.info()
+df.describe()
+head(n) : Berfungsi untuk melihat data sebanyak n pada kolom awal (jika tidak diisi, secara random n=6).
+tail(n) : Berfungsi untuk melihat data sebanyak n pada kolom akhit (jika tidak diisi, secara random n=6).
+shape() : Melihat jumlah baris dan kolom.
+info() : Nomor index beserta tipe datanya.
+describe() : Menunjukkan rangkuman statistik seperti rata-rata, median, dll pada kolom.
+Memilih baris dan kolom
+df.iloc([nomor_baris], [nomor kolom])
+df.loc([nomor_baris], ["Nama kolom"])
+df.loc([:], ["Nama kolom"])
+Pada index yang berisi “:” itu menandakan memilih semua semua urutan pada index. Lalu kenapa terkadang menggunakan iloc() atau loc(). Yang pertama untuk iloc() karena dia akan memilih data berdasarkan index, sedangkan untuk loc() menghiraukan kolom index nya.
+
+Data cleaning
+df.columns =['a', 'b', 'c']
+pd.isnull()
+df.dropna()
+df.dropna(axis=1)
+df.dropna(axis=1, thresh=n)
+df.fillna(x)
+df.fillna(df.mean())
+s = df.ix[:,nomor kolom yang dipilih]
+s.astype(tipedata)
+s.replace([1,3], ['one', 'three'])
+df.rename(columns={'nama lama': 'nama baru'})
+keterangan dari awal sampai akhir :
+
+Mengubah nama kolom jadi ‘a’, ‘b’, ‘c’.
+Mengecek apakah ada nilai NULL dengan keluaran boolean.
+Menghapus baris yang berisi NULL.
+Menghapus semua kolom yang berisi NULL.
+Menghapus semua kolom dengan batas n.
+Mengisi nilai NULL dengan x.
+Mengisi nilai NULL dengan rata-rata.
+Membuat series dengan dataframe.
+Mengubah tipe data pada series.
+Mengubah nilai 1 dan 3 pada series dengan ‘one’ dan ‘three’
+Merename nama kolom.
+Filter dan sort
+df[(df[kolom] > 0.5) & {df[kolom] < 0.7)}]
+df.sort_values(nomorkolom, ascending=True)
+Yang pertama adalah melihat kolom yang lebih dari 0.5 dan kurang dari 0.7. Lalu yang kedua adalah mengurutkan kolom secara ascending (kecil terlebih dahulu).
+
+Combine
+df1.append(df2)
+df1.append([df1, df2], axis=1)
+df1.join(df2, on="kolom_yang_sama", how='inner')
+Menggabungkan baris df1 ke akhir df2 (jumlah kolom harus sama)
+Menggabungkan kolom df1 ke akhir df2 (jumlah baris harus sama)
+Metode SQL : melakukan inner join pada df1 dan df2 dengan mensyaratkan kolom yang sama. Seperti di SQL, terdapat juga Right join, Left Joim, outer join, dan tentunya inner join.
+
+
+#https://belajarpython.com/tutorial/tuple-python
